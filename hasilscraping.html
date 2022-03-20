@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Top 100 Songs</title>
+        <!-- Import Library JQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!-- Kode Java Script -->
+        <script type="text/javascript">
+            $(function(){
+                //mengambil data dari file json
+                $.get('hasilscraping.json',function(obj){
+                    var str = "<table border=1 align=center>";
+                    str +="<center><tr><td>No</td><td class='tables'>Song</td><td class='tables'>Singer</td><td class='tables'>Image</td><td class='tables'>Waktu Scraping</td></tr></center>";
+                    $.each(obj,function(n,hasilscraping){
+                        str +="<tr><td>" + hasilscraping.No + "</td>";
+                        str +="<td>" + hasilscraping.Song + "</td>";
+                        str +="<td class='tables'>" + hasilscraping.Singer + "</td>";
+                        str +="<td class='tables'>" + hasilscraping.Image + "</td>";
+                        str +="<td class='tables'>" + hasilscraping["Scrapping Time"] + "</td></tr>";
+                    });
+                    str +="</table>";
+                    $('#hasilscraping_json').html(str);
+                });
+            });
+        </script>
+    </head>
+    <body>
+         <!-- Menampilkan judul -->
+         <h1 style="text-align: center;">Top 100 Songs</h1>
+         <!-- Menampilkan list Top Film -->
+         <div id="hasilscraping_json"></div>
+         
+    </body>
+    </head>
+</html>
